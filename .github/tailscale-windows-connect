@@ -1,0 +1,19 @@
+
+name: Windows RDP Runner
+
+on:
+  workflow_dispatch:
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 360
+
+    steps:
+      - name: Check Windows environment
+        run: |
+          Write-Host "Windows runner is ready"
+          Get-ComputerInfo |
+            Select-Object WindowsProductName,
+                          WindowsVersion
+        shell: pwsh
